@@ -1,0 +1,286 @@
+:root {
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --transition-fast: 0.2s ease-in-out;
+  
+  /* Light Theme Variables */
+  --bg-color-light: #ffffff;
+  --text-color-light: #111827;
+  --nav-bg-light: #f3f4f6;
+  --primary-color-light: #3b82f6;
+  --primary-hover-light: #2563eb;
+  --border-light: #e5e7eb;
+  --card-bg-light: #ffffff;
+  --shadow-light: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  /* Dark Theme Variables */
+  --bg-color-dark: #0f172a;
+  --text-color-dark: #f8fafc;
+  --nav-bg-dark: #1e293b;
+  --primary-color-dark: #60a5fa;
+  --primary-hover-dark: #93c5fd;
+  --border-dark: #334155;
+  --card-bg-dark: #1e293b;
+  --shadow-dark: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base generic classes mapping to CSS Variables */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Theme specific overrides via class */
+body.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+.dark .navbar { background-color: var(--nav-bg-dark); border-bottom-color: var(--border-dark); }
+.dark .card { background-color: var(--card-bg-dark); border-color: var(--border-dark); box-shadow: var(--shadow-dark); }
+.dark input { background-color: var(--bg-color-dark); color: var(--text-color-dark); border-color: var(--border-dark); }
+.dark .btn-primary { background-color: var(--primary-color-dark); color: #0f172a; }
+.dark .btn-primary:hover { background-color: var(--primary-hover-dark); }
+.dark .todo-item { border-color: var(--border-dark); }
+
+/* Components */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--nav-bg-light);
+  border-bottom: 1px solid var(--border-light);
+  transition: background-color var(--transition-fast);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 500;
+  color: inherit;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+  opacity: 1;
+  color: var(--primary-color-light);
+}
+.dark .nav-link:hover, .dark .nav-link.active {
+  color: var(--primary-color-dark);
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-icon:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Card layout */
+.card {
+  background-color: var(--card-bg-light);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-fast);
+}
+
+/* Forms and Inputs */
+.form-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  outline: none;
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+input:focus {
+  border-color: var(--primary-color-light);
+}
+.dark input:focus {
+  border-color: var(--primary-color-dark);
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color-light);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform 0.1s;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover-light);
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+/* Todo List Elements */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  background-color: inherit;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todo-action {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.dynamic-link-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dynamic-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: var(--nav-bg-light);
+  color: var(--primary-color-light);
+  text-decoration: none;
+  border: 1px solid var(--border-light);
+}
+.dark .dynamic-link {
+  background-color: var(--nav-bg-dark);
+  color: var(--primary-color-dark);
+  border-color: var(--border-dark);
+}
+.dynamic-link:hover {
+  opacity: 0.8;
+}
+
+.not-found {
+  text-align: center;
+  padding-top: 4rem;
+}
+.not-found h1 {
+  font-size: 5rem;
+  color: var(--primary-color-light);
+  margin-bottom: 0;
+}
+.dark .not-found h1 {
+  color: var(--primary-color-dark);
+}
