@@ -17,7 +17,7 @@ const User = () => {
         <Link to="/user/1" className="dynamic-link">User 1</Link>
         <Link to="/user/42" className="dynamic-link">User 42</Link>
         <Link to="/user/100" className="dynamic-link">User 100</Link>
-        <Link to="/user/100" className="dynamic-link">Pratyaksh GAY</Link>
+        <Link to="/user/100" className="dynamic-link">Pratyaksh</Link>
 
       </div>
     </div>
